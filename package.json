@@ -1,0 +1,8 @@
+{
+  "name": "expansion-pack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/theodorusclarence/expansion-pack.git",
+  "author": "Theodorus Clarence <theodorusclarence@gmail.com>",
+  "license": "MIT"
+}
