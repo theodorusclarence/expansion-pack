@@ -1,13 +1,21 @@
 #!/bin/bash
 
-echo "================================="
-echo "Running React Hook Form Expansion"
-echo "================================="
-echo ""
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+CYAN='\033[1;36m'
+NC='\033[0m'
+
+echo -e "${CYAN}========================="
+echo "React Hook Form Expansion"
+echo "========================="
+echo -e "${NC}"
 
 #region  //*=========== Install Packages ===========
-echo "[Step 1] Installing additional packages"
-echo "Packages: react-hook-form react-datepicker react-dropzone"
+echo -e "${NC}"
+echo -e "${GREEN}[Step 1] Installing additional packages${NC}"
+echo ""
+echo -e "Packages: ${GREEN}react-hook-form react-datepicker react-dropzone"
+echo -e "${NC}"
 yarn add react-hook-form react-datepicker react-dropzone 
 # endregion  //*======== Install Packages ===========
 
@@ -18,7 +26,11 @@ mkdir -p src/types
 #endregion  //*======== Create Directories ===========
 
 #region  //*=========== Downloading Files ===========
-echo "[Step 2] Downloading files"
+echo ""
+echo -e "${GREEN}[Step 2] Downloading files${NC}"
+echo ""
+
+DIRNAME="rhf"
 
 files=(
   "src/components/forms/DatePicker.tsx"
@@ -33,16 +45,17 @@ files=(
 for i in "${files[@]}"
 do
   echo "Downloading... $i"
-  curl -LJs -o $i https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/$i
+  curl -LJs -o $i https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/$DIRNAME/$i
 done
 
 # Append datepicker css reset
 echo "Appending additional css..."
-curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/rhf/datepicker.css >> src/styles/globals.css
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/$DIRNAME/datepicker.css >> src/styles/globals.css
 #endregion  //*======== Downloading Files ===========
 
 
 echo ""
-echo "============================================"
+echo -e "${CYAN}============================================"
 echo "🔋 React Hook Form Expansion Completed"
-echo "Check /src/sandbox/rhf.tsx for example usage"
+echo "Check src/pages/sandbox/rhf.tsx for example usage"
+

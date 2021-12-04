@@ -7,7 +7,7 @@ import Input from '@/components/forms/Input';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-export default function FormSandbox() {
+export default function RHFSandbox() {
   //#region  //*============== FORM
   const methods = useForm({
     mode: 'onTouched',
@@ -24,7 +24,7 @@ export default function FormSandbox() {
   //#endregion //*============== FORM SUBMIT
   return (
     <Layout>
-      <Seo templateTitle='Form-sandbox' />
+      <Seo templateTitle='React Hook Form Sandbox' />
 
       <section className=''>
         <div className='min-h-screen py-20 layout'>
