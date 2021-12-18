@@ -6,7 +6,7 @@
 ## Roadmap
 
 - [x] React Hook Form + Form Input Components
-- [ ] Storybook
+- [x] Storybook
 - [ ] Cypress
 - [ ] Authentication with Zustand
 - [ ] [Toast with SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
@@ -16,4 +16,10 @@
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/rhf/trigger.sh | bash -s
+```
+
+## Storybook
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/storybook/trigger.sh | bash -s
 ```
