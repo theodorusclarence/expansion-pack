@@ -13,10 +13,9 @@ echo -e "${NC}"
 #region  //*=========== Install Packages ===========
 echo -e "${NC}"
 echo -e "${GREEN}[Step 1] Initializing Storybook with Webpack 5${NC}"
-echo -e "Press enter on prompt, this may take a while to download."
-echo -e "There will be a prompt to use eslintPlugin, it is suggested to add it"
+echo -e "This may take a while to download."
 echo ""
-npx -y sb init --builder webpack5
+echo y | npx -y sb init --builder webpack5
 echo -e ""
 echo -e "Installing Dev Packages: ${GREEN}@storybook/addon-postcss plop inquirer-fuzzy-path"
 echo -e "${NC}"
