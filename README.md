@@ -14,11 +14,15 @@
 
 ## React Hook Form
 
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/rhf/README.md)
+
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/rhf/trigger.sh | bash -s
 ```
 
 ## Storybook
+
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/storybook/README.md)
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/storybook/trigger.sh | bash -s

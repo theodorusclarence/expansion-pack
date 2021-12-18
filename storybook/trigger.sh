@@ -57,5 +57,6 @@ done
 echo ""
 echo -e "${CYAN}============================================"
 echo "🔋 Storybook Expansion Completed"
-echo "Run `yarn plop` to generate your storybook components"
+echo "Run yarn plop to generate your storybook components"
+echo "Run yarn storybook to start the storybook"
 
