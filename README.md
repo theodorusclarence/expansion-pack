@@ -9,7 +9,7 @@
 - [x] Storybook
 - [x] Cypress
 - [ ] Authentication with Zustand
-- [ ] [Toast with SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
+- [X] [Toast with React Query / SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
 - [x] [Dialog Manager with Zustand](https://github.com/theodorusclarence/dialog-manager)
 
 ## React Hook Form
@@ -34,6 +34,22 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/cypress/trigger.sh | bash -s
+```
+
+## Toast with React Query / Toast
+
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/toast/README.md)
+
+React Query
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/toast/trigger-rq.sh | bash -s
+```
+
+Toast
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/toast/trigger-swr.sh | bash -s
 ```
 
 ## Dialog Manager with Zustand
