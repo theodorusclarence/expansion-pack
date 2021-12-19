@@ -35,7 +35,6 @@ DIRNAME="dialog-zustand"
 
 files=(
   "src/components/dialog/BaseDialog.tsx"
-  "src/components/dialog/BaseDialog.tsx"
   "src/components/layout/DialogZustandLayout.tsx"
   "src/hooks/useDialog.tsx"
   "src/pages/sandbox/dialog-zustand.tsx"
@@ -52,6 +51,6 @@ done
 echo ""
 echo -e "${CYAN}============================================"
 echo "🔋 Dialog Zustand Expansion Completed"
-echo -e "${RED}REQUIRED ACTIONS, move 'src/components/layout/DialogZustandLayout.tsx' to the 'Layout.tsx' component manually to avoid conflicts${CYAN}"
+echo -e "${RED}REQUIRED ACTIONS${NC} move 'src/components/layout/DialogZustandLayout.tsx' to the 'Layout.tsx' component manually to avoid conflicts${CYAN}"
 echo "Check src/pages/sandbox/dialog-zustand.tsx for example usage"
 

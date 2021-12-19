@@ -10,7 +10,7 @@
 - [ ] Cypress
 - [ ] Authentication with Zustand
 - [ ] [Toast with SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
-- [ ] [Dialog Manager with Zustand](https://github.com/theodorusclarence/dialog-manager)
+- [x] [Dialog Manager with Zustand](https://github.com/theodorusclarence/dialog-manager)
 
 ## React Hook Form
 
@@ -26,4 +26,12 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/storybook/trigger.sh | bash -s
+```
+
+## Dialog Manager with Zustand
+
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/dialog-zustand/README.md)
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/dialog-zustand/trigger.sh | bash -s
 ```
