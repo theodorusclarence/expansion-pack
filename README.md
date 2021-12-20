@@ -11,6 +11,7 @@
 - [ ] Authentication with Zustand
 - [X] [Toast with React Query / SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
 - [x] [Dialog Manager with Zustand](https://github.com/theodorusclarence/dialog-manager)
+- [x] NProgress
 
 ## React Hook Form
 
@@ -38,7 +39,7 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 
 ## Toast with React Query / Toast
 
-[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/toast/README.md)
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/**main**/toast/README.md)
 
 React Query
 
@@ -58,4 +59,12 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/dialog-zustand/trigger.sh | bash -s
+```
+
+## NProgress
+
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/nprogress/README.md)
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/nprogress/trigger.sh | bash -s
 ```
