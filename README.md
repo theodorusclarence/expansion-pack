@@ -37,17 +37,17 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/cypress/trigger.sh | bash -s
 ```
 
-## Toast with React Query / Toast
+## Toast with React Query / SWR
 
 [See the readme](https://github.com/theodorusclarence/expansion-pack/blob/**main**/toast/README.md)
 
-React Query
+### React Query
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/toast/trigger-rq.sh | bash -s
 ```
 
-Toast
+### SWR
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/toast/trigger-swr.sh | bash -s
