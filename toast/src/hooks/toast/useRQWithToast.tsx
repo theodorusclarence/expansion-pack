@@ -2,7 +2,7 @@ import * as React from 'react';
 import { UseQueryResult } from 'react-query';
 import toast from 'react-hot-toast';
 
-import { defaultToastMessage } from '@/constant/toast';
+import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 
 type OptionType = {
   runCondition?: boolean;
@@ -19,7 +19,7 @@ export default function useRQWithToast<T, E>(
 
   const toastStatus = React.useRef<string>(data ? 'done' : 'idle');
   const toastMessage = {
-    ...defaultToastMessage,
+    ...DEFAULT_TOAST_MESSAGE,
     ...customMessages,
   };
 

@@ -9,7 +9,7 @@ import useRQWithToast from '@/hooks/toast/useRQWithToast';
 import Button from '@/components/buttons/Button';
 import Seo from '@/components/Seo';
 
-import { defaultToastMessage } from '@/constant/toast';
+import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 
 export type DataType = {
   id: number;
@@ -46,7 +46,7 @@ export default function SandboxPage() {
                   setTimeout(resolve, 1000);
                 }),
                 {
-                  ...defaultToastMessage,
+                  ...DEFAULT_TOAST_MESSAGE,
                 }
               )
             }
