@@ -151,15 +151,14 @@ export default function DropzoneInput({
           control={control}
           name={id}
           rules={validation}
-          render={(controllerProps) => (
+          render={({ field }) => (
             <>
               <div
                 className='mt-1 focus:outline-none focus:ring-dark-400 group'
                 {...getRootProps()}
-                {...controllerProps}
                 ref={dropzoneRef}
               >
-                <input {...getInputProps()} />
+                <input {...field} {...getInputProps()} />
                 <div
                   className={clsx(
                     'px-2 py-8 w-full rounded border-2 border-gray-300 border-dashed cursor-pointer',
