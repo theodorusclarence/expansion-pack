@@ -35,13 +35,13 @@ export default function DropzoneInput({
     formState: { errors },
   } = useFormContext();
 
-  //#region  //*=========== ERROR FOCUS ===========
+  //#region  //*=========== Error Focus ===========
   const dropzoneRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     errors[id] && dropzoneRef.current?.focus();
   }, [errors, id]);
-  //#endregion  //*======== ERROR FOCUS ===========
+  //#endregion  //*======== Error Focus ===========
 
   const [files, setFiles] = React.useState<FileWithPreview[]>(
     getValues(id) || []

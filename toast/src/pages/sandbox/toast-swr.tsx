@@ -9,7 +9,7 @@ import useWithToast from '@/hooks/toast/useSWRWithToast';
 import Button from '@/components/buttons/Button';
 import Seo from '@/components/Seo';
 
-import { defaultToastMessage } from '@/constant/toast';
+import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 
 export type DataTypeApi = { id: number; title: string; completed: boolean };
 
@@ -39,7 +39,7 @@ export default function SandboxPage() {
                   setTimeout(resolve, 1000);
                 }),
                 {
-                  ...defaultToastMessage,
+                  ...DEFAULT_TOAST_MESSAGE,
                 }
               )
             }

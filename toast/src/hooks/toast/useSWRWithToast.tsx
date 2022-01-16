@@ -4,7 +4,7 @@ import { SWRResponse } from 'swr';
 
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
 
-import { defaultToastMessage } from '@/constant/toast';
+import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 
 type OptionType = {
   runCondition?: boolean;
@@ -22,7 +22,7 @@ export default function useWithToast<T, E>(
   const toastStatus = React.useRef<string>(data ? 'done' : 'idle');
 
   const toastMessage = {
-    ...defaultToastMessage,
+    ...DEFAULT_TOAST_MESSAGE,
     ...customMessages,
   };
 

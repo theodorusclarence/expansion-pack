@@ -11,20 +11,20 @@ import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
 export default function RHFSandbox() {
-  //#region  //*============== FORM
+  //#region  //*=========== Form ===========
   const methods = useForm({
     mode: 'onTouched',
   });
   const { handleSubmit } = methods;
-  //#endregion  //*============== FORM
+  //#endregion  //*======== Form ===========
 
-  //#region //*============== FORM SUBMIT
+  //#region  //*=========== Form Submit ===========
   const onSubmit = (data: unknown) => {
     // eslint-disable-next-line no-console
     console.log(data);
     return;
   };
-  //#endregion //*============== FORM SUBMIT
+  //#endregion  //*======== Form Submit ===========
 
   return (
     <Layout>
