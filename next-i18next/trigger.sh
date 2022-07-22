@@ -44,7 +44,7 @@ files=(
 for i in "${files[@]}"
 do
   echo "Downloading... $i"
-  curl -LJs -o $i https://raw.githubusercontent.com/bryantobing12/expansion-pack/main/$DIRNAME/$i
+  curl -LJs -o $i https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/$DIRNAME/$i
 done
 #endregion  //*======== Downloading Files ===========
 
