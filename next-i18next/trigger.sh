@@ -33,7 +33,7 @@ files=(
   "public/locales/en/common.json"
   "public/locales/id/common.json"
   "next-i18next.config.js"
-  "next.config.js"
+  "next.config.expansion.js"
 )
 
 for i in "${files[@]}"
@@ -46,5 +46,6 @@ done
 echo ""
 echo -e "${CYAN}============================================"
 echo "🔋 next-i18next Expansion Completed"
-echo -e "${RED}REQUIRED ACTIONS${NC} move 'src/pages/next-i18next-_app.tsx' to the '_app.tsx' component manually to avoid conflicts${CYAN}"
+echo -e "${RED}REQUIRED ACTIONS${NC} update '_app.tsx' component with the content of 'src/pages/next-i18next-_app.tsx' manually to avoid conflicts${CYAN}"
+echo -e "${RED}REQUIRED ACTIONS${NC} update main 'next.config.js' with the content of next.config.expansion.js manually to avoid conflicts${CYAN}"
 

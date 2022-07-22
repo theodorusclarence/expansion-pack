@@ -10,7 +10,7 @@ const TranslationExample = () => {
 
 export default TranslationExample;
 
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(locale && (await serverSideTranslations(locale, ["common"]))),
