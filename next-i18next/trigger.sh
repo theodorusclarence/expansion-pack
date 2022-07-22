@@ -20,6 +20,11 @@ echo -e "${NC}"
 yarn add next-i18next
 # endregion  //*======== Install Packages ===========
 
+#region  //*=========== Create Directories ===========
+mkdir -p public/locales/en
+mkdir -p public/locales/id
+#endregion  //*======== Create Directories ===========
+
 #region  //*=========== Downloading Files ===========
 echo ""
 echo -e "${GREEN}[Step 2] Downloading files${NC}"
