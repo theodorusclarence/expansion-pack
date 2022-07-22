@@ -28,11 +28,11 @@ echo ""
 DIRNAME="next-i18next"
 
 files=(
-  "public/locales/en/common.json",
-  "public/locales/id/common.json",
-  "src/pages/next-i18next-_app.tsx",
-  "src/pages/next-i18next-example.tsx",
-  "next-i18next.config.js",
+  "src/pages/next-i18next-_app.tsx"
+  "src/pages/next-i18next-example.tsx"
+  "public/locales/en/common.json"
+  "public/locales/id/common.json"
+  "next-i18next.config.js"
   "next.config.js"
 )
 
