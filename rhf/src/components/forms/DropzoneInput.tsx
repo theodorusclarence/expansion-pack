@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { useDropzone } from 'react-dropzone';
+import { Accept, FileRejection, useDropzone } from 'react-dropzone';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import FilePreview from '@/components/forms/FilePreview';
@@ -8,7 +8,7 @@ import FilePreview from '@/components/forms/FilePreview';
 import { FileWithPreview } from '@/types/dropzone';
 
 type DropzoneInputProps = {
-  accept?: string;
+  accept?: Accept;
   helperText?: string;
   id: string;
   label: string;
@@ -48,7 +48,7 @@ export default function DropzoneInput({
   );
 
   const onDrop = React.useCallback(
-    (acceptedFiles, rejectedFiles) => {
+    <T extends File>(acceptedFiles: T[], rejectedFiles: FileRejection[]) => {
       if (rejectedFiles && rejectedFiles.length > 0) {
         setValue(id, files ? [...files] : null);
         setError(id, {
@@ -56,11 +56,10 @@ export default function DropzoneInput({
           message: rejectedFiles && rejectedFiles[0].errors[0].message,
         });
       } else {
-        const acceptedFilesPreview = acceptedFiles.map(
-          (file: FileWithPreview) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
+        const acceptedFilesPreview = acceptedFiles.map((file: T) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
         );
 
         setFiles(
@@ -132,11 +131,11 @@ export default function DropzoneInput({
       </label>
 
       {readOnly && !(files?.length > 0) ? (
-        <div className='py-3 pl-3 pr-4 text-sm border border-gray-300 divide-y divide-gray-300 rounded-md'>
+        <div className='divide-y divide-gray-300 rounded-md border border-gray-300 py-3 pl-3 pr-4 text-sm'>
           No file uploaded
         </div>
       ) : files?.length >= maxFiles ? (
-        <ul className='mt-1 border border-gray-300 divide-y divide-gray-300 rounded-md'>
+        <ul className='mt-1 divide-y divide-gray-300 rounded-md border border-gray-300'>
           {files.map((file, index) => (
             <FilePreview
               key={index}
@@ -154,14 +153,14 @@ export default function DropzoneInput({
           render={({ field }) => (
             <>
               <div
-                className='mt-1 focus:outline-none focus:ring-dark-400 group'
+                className='focus:ring-dark-400 group mt-1 focus:outline-none'
                 {...getRootProps()}
                 ref={dropzoneRef}
               >
                 <input {...field} {...getInputProps()} />
                 <div
                   className={clsx(
-                    'px-2 py-8 w-full rounded border-2 border-gray-300 border-dashed cursor-pointer',
+                    'w-full cursor-pointer rounded border-2 border-dashed border-gray-300 px-2 py-8',
                     errors[id]
                       ? 'border-red-500 group-focus:border-red-500'
                       : 'group-focus:border-primary-500'
@@ -169,7 +168,7 @@ export default function DropzoneInput({
                 >
                   <div className='space-y-1 text-center'>
                     <svg
-                      className='w-12 h-12 mx-auto text-gray-400'
+                      className='mx-auto h-12 w-12 text-gray-400'
                       stroke='currentColor'
                       fill='none'
                       viewBox='0 0 48 48'
@@ -197,11 +196,13 @@ export default function DropzoneInput({
                   <p className='text-xs text-gray-500'>{helperText}</p>
                 )}
                 {errors[id] && (
-                  <p className='text-sm text-red-500'>{errors[id].message}</p>
+                  <p className='text-sm text-red-500'>
+                    {errors[id]?.message as unknown as string}
+                  </p>
                 )}
               </div>
               {!readOnly && !!files?.length && (
-                <ul className='mt-1 border border-gray-300 divide-y divide-gray-300 rounded-md'>
+                <ul className='mt-1 divide-y divide-gray-300 rounded-md border border-gray-300'>
                   {files.map((file, index) => (
                     <FilePreview
                       key={index}

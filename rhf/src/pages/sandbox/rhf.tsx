@@ -56,7 +56,7 @@ export default function RHFSandbox() {
                 id='photo'
                 label='Activity Photo'
                 validation={{ required: 'Photo must be filled' }}
-                accept='image/png, image/jpg, image/jpeg'
+                accept={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
                 helperText='You can upload file with .png, .jpg, atau .jpeg extension.'
               />
               <DatePicker
@@ -72,11 +72,10 @@ export default function RHFSandbox() {
                 validation={{ required: 'Address must be filled' }}
               />
               <div className='flex flex-wrap gap-4'>
-                {/* other button must have type='button' so it won't trigger validation */}
-                <Button type='button' variant='outline'>
+                <Button variant='outline'>
                   Not Submit
                 </Button>
-                <Button>Submit</Button>
+                <Button type='submit'>Submit</Button>
               </div>
               <p className='text-sm text-gray-800'>
                 Check console after submit

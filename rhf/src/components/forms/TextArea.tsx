@@ -60,7 +60,7 @@ export default function TextArea({
       <div className='mt-1'>
         {helperText && <p className='text-xs text-gray-500'>{helperText}</p>}
         {!hideError && errors[id] && (
-          <span className='text-sm text-red-500'>{errors[id].message}</span>
+          <span className='text-sm text-red-500'>{errors[id]?.message as unknown as string}</span>
         )}
       </div>
     </div>
