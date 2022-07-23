@@ -2,16 +2,16 @@
 
 [ts-nextjs-tailwind-starter](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter) expansion pack
 
-
 ## Roadmap
 
 - [x] React Hook Form + Form Input Components
 - [x] Storybook
 - [x] Cypress
 - [ ] Authentication with Zustand
-- [X] [Toast with React Query / SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
+- [x] [Toast with React Query / SWR](https://theodorusclarence.com/blog/react-loading-state-pattern)
 - [x] [Dialog Manager with Zustand](https://github.com/theodorusclarence/dialog-manager)
 - [x] NProgress
+- [x] I18n with next-i18next
 
 ## React Hook Form
 
@@ -67,4 +67,12 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/nprogress/trigger.sh | bash -s
+```
+
+## next-i18next
+
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/next-i18next/README.md)
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/next-i18next/trigger.sh | bash -s
 ```
