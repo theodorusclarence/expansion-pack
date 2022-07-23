@@ -39,7 +39,7 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 
 ## Toast with React Query / SWR
 
-[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/**main**/toast/README.md)
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/toast/README.md)
 
 ### React Query
 
