@@ -42,6 +42,7 @@ files=(
   "src/components/forms/FilePreview.tsx"
   "src/components/forms/Input.tsx"
   "src/components/forms/SelectInput.tsx"
+  "src/components/forms/PasswordInput.tsx"
   "src/components/forms/TextArea.tsx"
   "src/pages/sandbox/rhf.tsx"
   "src/types/dropzone.ts"
