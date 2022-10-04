@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+
+import logger from '@/lib/logger';
 
 import Button from '@/components/buttons/Button';
 import DatePicker from '@/components/forms/DatePicker';
@@ -10,32 +12,46 @@ import TextArea from '@/components/forms/TextArea';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-export default function RHFSandbox() {
+import { FileWithPreview } from '@/types/dropzone';
+
+type SandboxForm = {
+  name: string;
+  gender: 'male' | 'female' | 'none';
+  gender2: 'male' | 'female' | 'none';
+  photo: FileWithPreview;
+  date: Date;
+  address: string;
+};
+
+export default function FormSandbox() {
   //#region  //*=========== Form ===========
-  const methods = useForm({
+  const methods = useForm<SandboxForm>({
     mode: 'onTouched',
   });
   const { handleSubmit } = methods;
   //#endregion  //*======== Form ===========
 
   //#region  //*=========== Form Submit ===========
-  const onSubmit = (data: unknown) => {
+  const onSubmit: SubmitHandler<SandboxForm> = (data) => {
+    logger({ data }, 'rhf.tsx line 33');
+
+    // !STARTERCONF Remove console log, use logger instead
     // eslint-disable-next-line no-console
-    console.log(data);
+    console.log({ data });
     return;
   };
   //#endregion  //*======== Form Submit ===========
 
   return (
     <Layout>
-      <Seo templateTitle='React Hook Form Sandbox' />
+      <Seo templateTitle='Form Sandbox' />
 
       <section className=''>
-        <div className='layout py-20 min-h-screen'>
+        <div className='layout min-h-screen py-20'>
           <FormProvider {...methods}>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className='space-y-3 max-w-sm'
+              className='max-w-sm space-y-3'
             >
               <Input
                 id='name'
@@ -62,8 +78,10 @@ export default function RHFSandbox() {
               <DatePicker
                 id='date'
                 label='Date'
-                validation={{ required: 'Date must be filled' }}
-                // you can customize the default with `dateFormat`
+                validation={{
+                  required: 'Date must be filled',
+                  valueAsDate: true,
+                }}
                 placeholder='dd/mm/yyyy'
               />
               <TextArea
@@ -72,9 +90,7 @@ export default function RHFSandbox() {
                 validation={{ required: 'Address must be filled' }}
               />
               <div className='flex flex-wrap gap-4'>
-                <Button variant='outline'>
-                  Not Submit
-                </Button>
+                <Button variant='outline'>Not Submit</Button>
                 <Button type='submit'>Submit</Button>
               </div>
               <p className='text-sm text-gray-800'>

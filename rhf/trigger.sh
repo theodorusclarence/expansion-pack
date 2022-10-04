@@ -44,7 +44,7 @@ files=(
   "src/components/forms/SelectInput.tsx"
   "src/components/forms/PasswordInput.tsx"
   "src/components/forms/TextArea.tsx"
-  "src/pages/sandbox/rhf.tsx"
+  "src/pages/sandbox/form.tsx"
   "src/types/dropzone.ts"
 )
 for i in "${files[@]}"

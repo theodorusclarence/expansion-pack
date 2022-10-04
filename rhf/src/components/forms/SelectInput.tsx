@@ -37,10 +37,12 @@ export default function SelectInput({
     children,
     (child) => {
       if (React.isValidElement(child)) {
-        return React.cloneElement(child, {
-          disabled: child.props.value !== rest?.defaultValue,
-          // selected: child.props.value === rest?.defaultValue,
-        });
+        return React.cloneElement(
+          child as React.ReactElement<SelectInputProps>,
+          {
+            disabled: child.props.value !== rest?.defaultValue,
+          }
+        );
       }
     }
   );
@@ -60,10 +62,10 @@ export default function SelectInput({
           id={id}
           className={clsx(
             readOnly
-              ? 'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300'
+              ? 'cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0'
               : errors[id]
-              ? 'focus:ring-red-500 border-red-500 focus:border-red-500'
-              : 'focus:ring-primary-500 border-gray-300 focus:border-primary-500',
+              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+              : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500',
             'block w-full rounded-md shadow-sm',
             { 'text-gray-500': value === '' }
           )}
@@ -78,7 +80,7 @@ export default function SelectInput({
         </select>
 
         {errors[id] && (
-          <div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
+          <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
             <HiExclamationCircle className='text-xl text-red-500' />
           </div>
         )}
@@ -86,7 +88,9 @@ export default function SelectInput({
       <div className='mt-1'>
         {helperText && <p className='text-xs text-gray-500'>{helperText}</p>}
         {errors[id] && (
-          <span className='text-sm text-red-500'>{errors[id]?.message as unknown as string}</span>
+          <span className='text-sm text-red-500'>
+            {errors[id]?.message as unknown as string}
+          </span>
         )}
       </div>
     </div>
