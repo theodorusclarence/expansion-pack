@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query';
 import * as React from 'react';
-import { UseQueryResult } from 'react-query';
 import toast from 'react-hot-toast';
 
 import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';

@@ -1,6 +1,9 @@
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryOptions,
+} from '@tanstack/react-query';
 import { AppProps } from 'next/app';
-import { QueryClient, QueryClientProvider, QueryOptions } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 import '@/styles/globals.css';
 
@@ -26,7 +29,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <DismissableToast />
       <Component {...pageProps} />
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
     </QueryClientProvider>
   );
 }
