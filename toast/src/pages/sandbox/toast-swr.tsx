@@ -1,8 +1,8 @@
-import axios from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 import useSWR from 'swr';
 
+import apiMock from '@/lib/axios-mock';
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
 import useWithToast from '@/hooks/toast/useSWRWithToast';
 
@@ -18,9 +18,7 @@ export default function SandboxPage() {
 
   const { data: queryData } = useWithToast(
     useSWR<DataTypeApi>('dummy', () =>
-      axios
-        .get('https://jsonplaceholder.typicode.com/todos')
-        .then((res) => res.data)
+      apiMock.get('/me').then((res) => res.data)
     )
   );
 
@@ -46,9 +44,7 @@ export default function SandboxPage() {
           >
             Submit
           </Button>
-          {queryData && (
-            <pre className='max-w-lg truncate'>{JSON.stringify(queryData)}</pre>
-          )}
+          {queryData && <pre>{JSON.stringify(queryData)}</pre>}
         </div>
       </section>
     </>

@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 import toast from 'react-hot-toast';
-import { useQuery } from 'react-query';
 
+import { mockQuery } from '@/lib/axios-mock';
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
 import useRQWithToast from '@/hooks/toast/useRQWithToast';
 
@@ -11,24 +11,19 @@ import Seo from '@/components/Seo';
 
 import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 
-export type DataType = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { ApiReturn } from '@/types/api';
 
-const queryFn = async () => {
-  const { data } = await axios.get(
-    'https://jsonplaceholder.typicode.com/todos'
-  );
-  return data;
+type User = {
+  id: number;
+  name: string;
+  token: string;
 };
 
 export default function SandboxPage() {
   const isLoading = useLoadingToast();
 
   const { data: queryData } = useRQWithToast(
-    useQuery<DataType, Error>('/statistics', queryFn)
+    useQuery<ApiReturn<User>, Error>(['/me'], mockQuery)
   );
 
   return (
@@ -53,9 +48,7 @@ export default function SandboxPage() {
           >
             Submit
           </Button>
-          {queryData && (
-            <pre className='max-w-lg truncate'>{JSON.stringify(queryData)}</pre>
-          )}
+          {queryData && <pre>{JSON.stringify(queryData, null, 2)}</pre>}
         </div>
       </section>
     </>

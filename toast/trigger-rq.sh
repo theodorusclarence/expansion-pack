@@ -14,9 +14,9 @@ echo -e "${NC}"
 echo -e "${NC}"
 echo -e "${GREEN}[Step 1] Installing additional packages${NC}"
 echo ""
-echo -e "Packages: ${GREEN}react-hot-toast react-query axios"
+echo -e "Packages: ${GREEN}react-hot-toast @tanstack/react-query @tanstack/react-query-devtools axios"
 echo -e "${NC}"
-yarn add react-hot-toast react-query axios
+yarn add react-hot-toast @tanstack/react-query @tanstack/react-query-devtools axios
 # endregion  //*======== Install Packages ===========
 
 #region  //*=========== Create Directories ===========
@@ -24,6 +24,7 @@ mkdir -p src/components
 mkdir -p src/constant
 mkdir -p src/hooks/toast
 mkdir -p src/lib
+mkdir -p src/pages/api/mock
 mkdir -p src/pages/sandbox
 #endregion  //*======== Create Directories ===========
 
@@ -40,6 +41,8 @@ files=(
   "src/hooks/toast/useLoadingToast.tsx"
   "src/hooks/toast/useRQWithToast.tsx"
   "src/lib/axios.ts"
+  "src/lib/axios-mock.ts"
+  "src/pages/api/mock/me.ts"
   "src/pages/app-rq.tsx"
   "src/pages/sandbox/toast-rq.tsx"
 )
