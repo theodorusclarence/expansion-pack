@@ -1,36 +1,44 @@
 import { UseQueryResult } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 
 import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 
+import { ApiError } from '@/types/api';
+
 type OptionType = {
-  runCondition?: boolean;
   loading?: string;
   success?: string;
   error?: string;
 };
 
-export default function useRQWithToast<T, E>(
-  query: UseQueryResult<T, E>,
-  { runCondition = true, ...customMessages }: OptionType = {}
+export default function useQueryToast<T>(
+  query: UseQueryResult<T, AxiosError<ApiError>>,
+  customMessages: OptionType = {}
 ) {
-  const { data, isError, isLoading } = query;
+  const { data, isError, isLoading, error } = query;
 
   const toastStatus = React.useRef<string>(data ? 'done' : 'idle');
-  const toastMessage = {
-    ...DEFAULT_TOAST_MESSAGE,
-    ...customMessages,
-  };
 
   React.useEffect(() => {
-    if (!runCondition) return;
+    const toastMessage = {
+      ...DEFAULT_TOAST_MESSAGE,
+      ...customMessages,
+    };
 
     // If it is not the first render
     if (toastStatus.current === 'done' && !isLoading) return;
 
     if (isError) {
-      toast.error(toastMessage.error, { id: toastStatus.current });
+      toast.error(
+        typeof toastMessage.error === 'string'
+          ? toastMessage.error
+          : toastMessage.error(error),
+        {
+          id: toastStatus.current,
+        }
+      );
       toastStatus.current = 'done';
     } else if (isLoading) {
       toastStatus.current = toast.loading(toastMessage.loading);
@@ -42,15 +50,7 @@ export default function useRQWithToast<T, E>(
     return () => {
       toast.dismiss(toastStatus.current);
     };
-  }, [
-    data,
-    isError,
-    isLoading,
-    runCondition,
-    toastMessage.error,
-    toastMessage.loading,
-    toastMessage.success,
-  ]);
+  }, [customMessages, data, error, isError, isLoading]);
 
   return { ...query };
 }
