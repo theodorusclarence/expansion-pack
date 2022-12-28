@@ -1,17 +1,17 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 
-import { mockQuery } from '@/lib/axios-mock';
-import useLoadingToast from '@/hooks/toast/useLoadingToast';
-import useRQWithToast from '@/hooks/toast/useRQWithToast';
+import apiMock, { mockQuery } from '@/lib/axios-mock';
+import useMutationToast from '@/hooks/toast/useMutationToast';
+import useQueryToast from '@/hooks/toast/useQueryToast';
 
 import Button from '@/components/buttons/Button';
 import Seo from '@/components/Seo';
+import Typography from '@/components/typography/Typography';
 
-import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
-
-import { ApiReturn } from '@/types/api';
+import { ApiError, ApiReturn } from '@/types/api';
 
 type User = {
   id: number;
@@ -19,11 +19,22 @@ type User = {
   token: string;
 };
 
-export default function SandboxPage() {
-  const isLoading = useLoadingToast();
+type LoginData = {
+  email: string;
+  password: string;
+};
 
-  const { data: queryData } = useRQWithToast(
-    useQuery<ApiReturn<User>, Error>(['/me'], mockQuery)
+export default function SandboxPage() {
+  const {
+    data: mutationData,
+    isLoading,
+    mutate,
+  } = useMutationToast<ApiReturn<undefined>, LoginData>(
+    useMutation((data) => apiMock.post('/login', data).then((res) => res.data))
+  );
+
+  const { data: queryData } = useQueryToast(
+    useQuery<ApiReturn<User>, AxiosError<ApiError>>(['/me'], mockQuery)
   );
 
   return (
@@ -31,24 +42,20 @@ export default function SandboxPage() {
       <Seo templateTitle='Sandbox' />
 
       <section className='bg-gray-100'>
-        <div className='flex flex-col items-start min-h-screen py-20 space-y-3 layout'>
+        <div className='layout flex min-h-screen flex-col items-start space-y-3 py-20'>
           <Button onClick={() => toast.success('Hello!')}>Open Toast</Button>
           <Button
             isLoading={isLoading}
             onClick={() =>
-              toast.promise(
-                new Promise(function (resolve) {
-                  setTimeout(resolve, 1000);
-                }),
-                {
-                  ...DEFAULT_TOAST_MESSAGE,
-                }
-              )
+              mutate({ email: 'admin@mail.com', password: 'admin' })
             }
           >
             Submit
           </Button>
+          <p>Query:</p>
           {queryData && <pre>{JSON.stringify(queryData, null, 2)}</pre>}
+          <p>Mutation:</p>
+          {mutationData && <pre>{JSON.stringify(mutationData, null, 2)}</pre>}
         </div>
       </section>
     </>
