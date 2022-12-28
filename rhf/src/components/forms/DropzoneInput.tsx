@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import get from 'lodash.get';
 import * as React from 'react';
 import { Accept, FileRejection, useDropzone } from 'react-dropzone';
 import { Controller, useFormContext } from 'react-hook-form';
@@ -34,13 +35,14 @@ export default function DropzoneInput({
     clearErrors,
     formState: { errors },
   } = useFormContext();
+  const error = get(errors, id);
 
   //#region  //*=========== Error Focus ===========
   const dropzoneRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    errors[id] && dropzoneRef.current?.focus();
-  }, [errors, id]);
+    error && dropzoneRef.current?.focus();
+  }, [error]);
   //#endregion  //*======== Error Focus ===========
 
   const [files, setFiles] = React.useState<FileWithPreview[]>(
@@ -161,7 +163,7 @@ export default function DropzoneInput({
                 <div
                   className={clsx(
                     'w-full cursor-pointer rounded border-2 border-dashed border-gray-300 px-2 py-8',
-                    errors[id]
+                    error
                       ? 'border-red-500 group-focus:border-red-500'
                       : 'group-focus:border-primary-500'
                   )}
@@ -195,9 +197,9 @@ export default function DropzoneInput({
                 {helperText !== '' && (
                   <p className='text-xs text-gray-500'>{helperText}</p>
                 )}
-                {errors[id] && (
+                {error && (
                   <p className='text-sm text-red-500'>
-                    {errors[id]?.message as unknown as string}
+                    {error.message?.toString()}
                   </p>
                 )}
               </div>

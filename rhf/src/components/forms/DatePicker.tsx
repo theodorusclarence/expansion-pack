@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import get from 'lodash.get';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
 import { HiOutlineCalendar } from 'react-icons/hi';
@@ -33,6 +34,7 @@ export default function DatePicker({
     formState: { errors },
     control,
   } = useFormContext();
+  const error = get(errors, id);
 
   // If there is a year default, then change the year to the props
   const defaultDate = new Date();
@@ -60,10 +62,10 @@ export default function DatePicker({
                 selected={value ? new Date(value) : undefined}
                 className={clsx(
                   readOnly
-                    ? 'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300'
-                    : errors[id]
-                    ? 'focus:ring-red-500 border-red-500 focus:border-red-500'
-                    : 'focus:ring-primary-500 border-gray-300 focus:border-primary-500',
+                    ? 'cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0'
+                    : error
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                    : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500',
                   'block w-full rounded-md shadow-sm'
                 )}
                 placeholderText={placeholder}
@@ -76,15 +78,15 @@ export default function DatePicker({
                 readOnly={readOnly}
                 {...rest}
               />
-              <HiOutlineCalendar className='absolute text-lg text-gray-500 transform -translate-y-1/2 pointer-events-none right-4 top-1/2' />
+              <HiOutlineCalendar className='pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 transform text-lg text-gray-500' />
             </div>
             <div className='mt-1'>
               {helperText !== '' && (
                 <p className='text-xs text-gray-500'>{helperText}</p>
               )}
-              {errors[id] && (
+              {error && (
                 <span className='text-sm text-red-500'>
-                  {errors[id]?.message as unknown as string}
+                  {error.message?.toString()}
                 </span>
               )}
             </div>

@@ -14,13 +14,13 @@ echo -e "${NC}"
 echo -e "${NC}"
 echo -e "${GREEN}[Step 1] Installing additional packages${NC}"
 echo ""
-echo -e "Packages: ${GREEN}react-hook-form react-datepicker react-dropzone react-image-lightbox"
+echo -e "Packages: ${GREEN}react-hook-form react-datepicker react-dropzone react-image-lightbox lodash.get"
 echo -e "${NC}"
-yarn add react-hook-form react-datepicker react-dropzone react-image-lightbox 
+yarn add react-hook-form react-datepicker react-dropzone react-image-lightbox lodash.get
 echo -e ""
-echo -e "Dev Packages: ${GREEN}@types/react-datepicker"
+echo -e "Dev Packages: ${GREEN}@types/react-datepicker @types/lodash.get"
 echo -e "${NC}"
-yarn add -D @types/react-datepicker 
+yarn add -D @types/react-datepicker @types/lodash.get
 # endregion  //*======== Install Packages ===========
 
 #region  //*=========== Create Directories ===========
@@ -39,6 +39,7 @@ DIRNAME="rhf"
 files=(
   "src/components/forms/DatePicker.tsx"
   "src/components/forms/DropzoneInput.tsx"
+  "src/components/forms/ErrorMessage.tsx"
   "src/components/forms/FilePreview.tsx"
   "src/components/forms/Input.tsx"
   "src/components/forms/SelectInput.tsx"
