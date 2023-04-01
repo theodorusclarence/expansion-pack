@@ -55,7 +55,7 @@ do
 done
 
 #region  //*=========== Editing .env.example ===========
-echo `
+echo '
 # Prisma
 # https://www.prisma.io/docs/reference/database-reference/connection-urls#env
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"
@@ -66,7 +66,8 @@ DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"
 # https://next-auth.js.org/configuration/options#secret
 # NEXTAUTH_SECRET=""
 NEXTAUTH_URL="http://localhost:3000"
-` >> .env.example
+' >> .env.example
+#endregion  //*======== Editing .env.example ===========
 
 echo ""
 echo -e "${CYAN}============================================"
