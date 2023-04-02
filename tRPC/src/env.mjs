@@ -1,3 +1,4 @@
+/** @see https://create.t3.gg/en/usage/env-variables */
 import { z } from 'zod';
 
 /**
