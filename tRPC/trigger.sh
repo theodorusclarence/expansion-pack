@@ -24,7 +24,7 @@ yarn add -D prisma
 mkdir -p prisma
 mkdir -p src/pages/api/auth
 mkdir -p src/pages/api/trpc
-mkdir -p src/server
+mkdir -p src/server/api/routers
 mkdir -p src/utils
 #endregion  //*======== Create Directories ===========
 
@@ -50,8 +50,9 @@ files=(
 )
 for i in "${files[@]}"
 do
+  encoded_file=$(echo "$i" | sed -e 's/\[/%5B/g' -e 's/\]/%5D/g')  # URL-encode the file path
   echo "Downloading... $i"
-  curl -LJs -o $i https://raw.githubusercontent.com/mrevanzak/expansion-pack/main/$DIRNAME/$i
+  curl -LJs -o $i https://raw.githubusercontent.com/mrevanzak/expansion-pack/main/$DIRNAME/$encoded_file
 done
 
 #region  //*=========== Editing .env.example ===========
