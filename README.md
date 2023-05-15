@@ -76,3 +76,12 @@ curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/
 ```bash
 curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/next-i18next/trigger.sh | bash -s
 ```
+
+
+## tRPC
+
+[See the readme](https://github.com/theodorusclarence/expansion-pack/blob/main/tRPC/README.md)
+
+```bash
+curl -s https://raw.githubusercontent.com/theodorusclarence/expansion-pack/main/tRPC/trigger.sh | bash -s
+```
